@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.UISamples.Page;
 
 namespace Xamarin.UISamples
 {
@@ -13,16 +14,6 @@ namespace Xamarin.UISamples
             MainPage = new MainPage();
         }
 
-        protected override void OnStart()
-        {
-        }
 
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
-        }
     }
 }
