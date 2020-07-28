@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
 
 namespace Xamarin.UISamples.iOS
 {
@@ -22,6 +23,7 @@ namespace Xamarin.UISamples.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            FormsMaterial.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
