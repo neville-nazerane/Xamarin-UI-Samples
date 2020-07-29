@@ -11,58 +11,41 @@
 
     <ContentPage.BindingContext>
         <vm:MainViewModel />
+        
     </ContentPage.BindingContext>
 
-    
     <ContentPage.Content>
         <CollectionView ItemsSource="{Binding MenuItems}"
-                        Margin="20">
+                        Margin="20, 60, 20, 0">
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="15"
-                                   Orientation="Vertical" />
+                <GridItemsLayout VerticalItemSpacing="30"
+                                 Orientation="Vertical" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:MenuData">
-                    <Grid RowDefinitions="150" ColumnDefinitions="150">
-                        <Button
-                            Text="{Binding Text}"
-                            Command="{Binding Command}">
-                            <Button.Clip>
-                                <PathGeometry>
-                                    <PathGeometry.Figures>
-                                        <PathFigure>
-                                            <PathFigure.Segments>
-                                                <PathSegmentCollection>
-                                                    <LineSegment Point="10, 140" />
-                                                    <LineSegment Point="10, 10" />
-                                                    <LineSegment Point="140, 140" />
-                                                    <LineSegment Point="140, 10" />
-                                                </PathSegmentCollection>
-                                            </PathFigure.Segments>
-                                        </PathFigure>
-                                    </PathGeometry.Figures>
-                                </PathGeometry>
-                            </Button.Clip>
+                    <Button
+                        CornerRadius="15"
+                        HeightRequest="60"
+                        Text="{Binding Text}"
+                        Command="{Binding Command}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
 
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#84a8a8" />
+                                    </VisualState.Setters>
+                                </VisualState>
 
-                                    <VisualState x:Name="Normal">
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="#84a8a8" />
-                                        </VisualState.Setters>
-                                    </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#c7dad1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
 
-                                    <VisualState x:Name="Disabled">
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="#c7dad1" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            
-                        </Button>
-                    </Grid>
+                    </Button>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
