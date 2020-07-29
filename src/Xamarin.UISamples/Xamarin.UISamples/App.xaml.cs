@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.UISamples.Page;
+using Xamarin.UISamples.Pages;
 
 namespace Xamarin.UISamples
 {
@@ -9,6 +9,8 @@ namespace Xamarin.UISamples
     {
         public App()
         {
+            Device.SetFlags(new string[] { "Shapes_Experimental" });
+
             InitializeComponent();
 
             MainPage = new MainPage();

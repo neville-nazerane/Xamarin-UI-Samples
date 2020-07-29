@@ -30,7 +30,7 @@ namespace Xamarin.UISamples.Helpers
             where TPage : Page, new()
         {
             return Build(async () => {
-                await Application.Current.MainPage.Navigation.PushAsync(new TPage());
+                await Application.Current.MainPage.Navigation.PushModalAsync(new TPage());
             });
         }
 

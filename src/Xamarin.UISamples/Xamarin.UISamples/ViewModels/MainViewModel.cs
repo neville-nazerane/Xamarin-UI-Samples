@@ -23,10 +23,11 @@ namespace Xamarin.UISamples.ViewModels
                 },
                 new MenuData{
                     Text = "Bye",
-                    Command = CommandHelpers.PushPageCommand<MainPage>()
+                    Command = CommandHelpers.PushPageCommand<Otherpage>()
                 }
-
+                
             };
+            
         }
 
     }
