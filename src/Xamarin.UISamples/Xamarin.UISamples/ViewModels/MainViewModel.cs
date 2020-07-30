@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.UISamples.Helpers;
 using Xamarin.UISamples.Models;
 using Xamarin.UISamples.Pages;
+using Xamarin.UISamples.Views;
 
 namespace Xamarin.UISamples.ViewModels
 {
@@ -18,8 +19,8 @@ namespace Xamarin.UISamples.ViewModels
             MenuItems = new MenuData[] { 
 
                 new MenuData{
-                    Text = "Hello",
-                    Command = CommandHelpers.PushPageCommand<MainPage>()
+                    Text = "DoorDash",
+                    Command = CommandHelpers.PushPageCommand<DoorDashPage>()
                 },
                 new MenuData{
                     Text = "Bye",
