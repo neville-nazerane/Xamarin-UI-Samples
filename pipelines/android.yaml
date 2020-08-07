@@ -35,10 +35,8 @@ stages:
         - task: NuGetCommand@2
           inputs:
             command: 'restore'
-            restoreSolution: $(solutionPath)
+            restoreSolution: '$(solutionPath)'
             feedsToUse: 'config'
-            nugetConfigPath: 'src/nuget.config'
-
         
         - task: android-manifest-version@1
           inputs:
