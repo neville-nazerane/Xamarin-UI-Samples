@@ -8,12 +8,12 @@ pool:
 variables:
   buildConfiguration: 'Release'
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
-  apkPath: com.companyname.monthlysubscriptions.apk
+  apkPath: com.companyname.xamarin.uisamples.apk
   solutionPath: 'src/Xamarin UI Samples.sln'
-  projectPath: src/MonthlySubscriptions/MonthlySubscriptions.Android
-  artifactName: subscriptionsAndroid
-  appCenterSlug: live.neville-live.com/Monthly-Subscriptions
-  keyStoreFile: subscriptions.jks
+  projectPath: src/Xamarin.UISamples\Xamarin.UISamples.Android
+  artifactName: publishedApk
+  appCenterSlug: live.neville-live.com/Xamarin-UI-Samples
+  keyStoreFile: xamarin_UI_samples.jks
 
 # to be defined as secrets:
   # keystore.password
