@@ -13,7 +13,7 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
-        
+
         <!--styles-->
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="Black" />
