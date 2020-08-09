@@ -17,16 +17,14 @@ namespace Xamarin.UISamples.ViewModels
         public MainViewModel()
         {
             MenuItems = new MenuData[] { 
-
-                new MenuData{
+                new MenuData {
                     Text = "DoorDash",
                     Command = CommandHelpers.PushPageCommand<DoorDashPage>()
                 },
-                new MenuData{
-                    Text = "Bye",
-                    Command = CommandHelpers.PushPageCommand<Otherpage>()
+                new MenuData {
+                    Text = "Robinhood",
+                    Command = CommandHelpers.PushPageCommand<RobinhoodPage>()
                 }
-                
             };
             
         }

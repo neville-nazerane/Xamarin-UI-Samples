@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Xamarin.UISamples.ViewModels"
+             xmlns:m="clr-namespace:Xamarin.UISamples.Models.Robinhood"
+             xmlns:control="clr-namespace:Xamarin.UISamples.Controls.Robinhood"
+             x:Class="Xamarin.UISamples.Views.RobinhoodPage">
+
+    <ContentPage.BindingContext>
+        <vm:RobinhoodViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Resources>
+
+        <!--styles-->
+        <Style TargetType="Frame">
+            <!--<Setter Property="Visual" Value="Material" />-->
+        </Style>
+
+        <!--converters-->
+        <control:LinkTypeToGridConverter x:Key="linkTypeToGrid" />
+        <control:ChangeToColorConverter x:Key="changeToColor" />
+
+        <DataTemplate x:Key="cardTemplate" x:DataType="m:Card">
+            <Frame CornerRadius="8" HasShadow="True" Margin="5" BorderColor="LightGray">
+                <Grid RowDefinitions="20, 30, *, auto"
+                      ColumnDefinitions="*, 40"
+                      RowSpacing="10">
+                    <Label Grid.ColumnSpan="2">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Title}"
+                                                     FontAttributes="Bold" />
+                                <Span Text=" " />
+                                <Span Text="{Binding Time}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Text="{Binding Description}"
+                           Grid.Row="1" 
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="{Binding LinkType, 
+                                                     Converter={StaticResource linkTypeToGrid}, 
+                                                     ConverterParameter='descriptionColSpan'}" />
+
+                    <Image Source="{Binding Link}"
+                           Aspect="AspectFill"
+                           Grid.ColumnSpan="{Binding LinkType, 
+                                                     Converter={StaticResource linkTypeToGrid}, 
+                                                     ConverterParameter='imageColSpan'}"
+                           Grid.Row="{Binding LinkType, 
+                                                     Converter={StaticResource linkTypeToGrid}, 
+                                                     ConverterParameter='imageRow'}" 
+                           Grid.Column="{Binding LinkType, 
+                                                     Converter={StaticResource linkTypeToGrid}, 
+                                                     ConverterParameter='imageCol'}" />
+
+                    <CollectionView ItemsSource="{Binding StockChanges}"
+                                    HeightRequest="25"
+                                    Grid.Row="{Binding LinkType, 
+                                                     Converter={StaticResource linkTypeToGrid}, 
+                                                     ConverterParameter='changes'}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                                               ItemSpacing="8" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="m:StockChange">
+                                <Label TextColor="{Binding Change, Converter={StaticResource changeToColor}}"
+                                       FontSize="Small">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding ShortName}" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding Change, StringFormat='{0:+0.00;-#0.00}%'}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </Grid>
+            </Frame>
+        </DataTemplate>
+
+        <DataTemplate x:Key="topTemplate">
+            <Grid RowDefinitions="20, 28, 200"
+                  Padding="10">
+
+                <Label Text="Top Movers"
+                       TextColor="Black"
+                       FontAttributes="Bold" />
+
+                <Label Text="Stocks making the biggest moves today."
+                       Grid.Row="1" />
+
+                <CollectionView ItemsSource="{Binding}" 
+                                Grid.Row="2">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                                           ItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="m:StockChange">
+
+                            <Frame WidthRequest="100">
+                                <Grid RowDefinitions="*, auto, auto">
+
+                                    <Label Text="{Binding Name}"
+                                           TextColor="Black"
+                                            LineBreakMode="WordWrap"
+                                            FontAttributes="Bold" />
+
+                                    <Label Text="{Binding ShortName}" 
+                                           FontSize="Large"
+                                           TextColor="ForestGreen"
+                                           Grid.Row="1" />
+
+                                    <Label Text="{Binding Change, StringFormat='+{0:0.00}%'}"
+                                           FontSize="Small"
+                                           TextColor="Green"
+                                           Grid.Row="2" />
+                                </Grid>
+                            </Frame>
+
+
+
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="popularTemplate">
+            <CollectionView ItemsSource="{Binding}"
+                            HeightRequest="120"
+                            ItemSizingStrategy="MeasureAllItems">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="3"
+                                     HorizontalItemSpacing="10"
+                                     VerticalItemSpacing="10"
+                                     Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:Popular">
+                        <Frame CornerRadius="20"
+                               HeightRequest="30"
+                               Padding="5">
+                            <Grid ColumnDefinitions="20, auto"
+                                  RowDefinitions="20">
+                                <Image Source="{Binding Image}" >
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="10, 10"
+                                                         RadiusX="10"
+                                                         RadiusY="10" />
+                                    </Image.Clip>
+                                </Image>
+                                <Label Text="{Binding Text}"
+                                       Grid.Column="1" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </DataTemplate>
+
+        <control:CardTemplateSelector x:Key="templateSelector" 
+                                      PopularTemplate="{StaticResource popularTemplate}"
+                                      CardTemplate="{StaticResource cardTemplate}"
+                                      TopTemplate="{StaticResource topTemplate}"/>
+
+
+
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="45, *"
+              Padding="15">
+            <Frame Padding="0"
+                   BorderColor="LightGray"
+                   HasShadow="False"
+                   CornerRadius="10">
+                <SearchBar Visual="Material"
+                           HeightRequest="15"
+                           Placeholder="Search companies..." />
+            </Frame>
+            <CollectionView ItemsSource="{Binding Listing}"
+                            Grid.Row="1"
+                            ItemTemplate="{StaticResource templateSelector}" >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>
