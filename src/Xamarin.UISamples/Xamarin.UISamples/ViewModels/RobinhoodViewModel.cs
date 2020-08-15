@@ -16,54 +16,6 @@ namespace Xamarin.UISamples.ViewModels
 
             Listing = new object[]
             {
-                new Popular[]
-                {
-                    new Popular
-                    {
-                        Image = "https://images.pexels.com/photos/5836/yellow-metal-design-decoration.jpg?auto=compress&crop=entropy&cs=tinysrgb&dpr=2&fit=crop&h=50&w=50",
-                        Text = "100 Most popular" 
-                    },
-                    new Popular
-                    {
-                        Image = "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&crop=entropy&cs=tinysrgb&dpr=2&fit=crop&h=50&w=50",
-                        Text = "Cannabis"
-                    },
-                    new Popular
-                    {
-                        Image = "https://images.pexels.com/photos/5836/yellow-metal-design-decoration.jpg?auto=compress&crop=entropy&cs=tinysrgb&dpr=2&fit=crop&h=50&w=50",
-                        Text = "Technology"
-                    },
-                    new Popular
-                    {
-                        Image = "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&crop=entropy&cs=tinysrgb&dpr=2&fit=crop&h=50&w=50",
-                        Text = "Top movers"
-                    },
-                    new Popular
-                    {
-                        Image = "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&crop=entropy&cs=tinysrgb&dpr=2&fit=crop&h=50&w=50",
-                        Text = "Crypto"
-                    },
-                    new Popular
-                    {
-                        Image = "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&crop=entropy&cs=tinysrgb&dpr=2&fit=crop&h=50&w=50",
-                        Text = "Index ETFs"
-                    },
-                    new Popular
-                    {
-                        Image = "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&crop=entropy&cs=tinysrgb&dpr=2&fit=crop&h=50&w=50",
-                        Text = "Upcoming Earnings"
-                    },
-                    new Popular
-                    {
-                        Image = "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&crop=entropy&cs=tinysrgb&dpr=2&fit=crop&h=50&w=50",
-                        Text = "Healthcare Supplies"
-                    },
-                    new Popular
-                    {
-                        Image = "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&crop=entropy&cs=tinysrgb&dpr=2&fit=crop&h=50&w=50",
-                        Text = "China"
-                    }
-                },
                 new Card {
                     Title = "Reuters",
                     Description = "Tesla appears poised for electrifying S&P 500 debut",

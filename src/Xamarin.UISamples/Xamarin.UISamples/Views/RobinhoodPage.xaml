@@ -138,42 +138,7 @@
 
         </DataTemplate>
 
-        <DataTemplate x:Key="popularTemplate">
-            <CollectionView ItemsSource="{Binding}"
-                            HeightRequest="120"
-                            ItemSizingStrategy="MeasureAllItems">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Span="3"
-                                     HorizontalItemSpacing="10"
-                                     VerticalItemSpacing="10"
-                                     Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="m:Popular">
-                        <Frame CornerRadius="20"
-                               HeightRequest="30"
-                               Padding="5">
-                            <Grid ColumnDefinitions="20, auto"
-                                  RowDefinitions="20">
-                                <Image Source="{Binding Image}" >
-                                    <Image.Clip>
-                                        <EllipseGeometry Center="10, 10"
-                                                         RadiusX="10"
-                                                         RadiusY="10" />
-                                    </Image.Clip>
-                                </Image>
-                                <Label Text="{Binding Text}"
-                                       Grid.Column="1" />
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </DataTemplate>
-
         <control:CardTemplateSelector x:Key="templateSelector" 
-                                      PopularTemplate="{StaticResource popularTemplate}"
                                       CardTemplate="{StaticResource cardTemplate}"
                                       TopTemplate="{StaticResource topTemplate}"/>
 
